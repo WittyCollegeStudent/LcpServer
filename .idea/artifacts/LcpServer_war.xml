@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="LcpServer:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="LcpServer.war">
+      <element id="artifact" artifact-name="LcpServer:war exploded" />
+    </root>
+  </artifact>
+</component>

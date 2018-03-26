@@ -1,6 +1,8 @@
 package entity;
 
-public class Quesion {
+import java.io.Serializable;
+
+public class Quesion implements Serializable {
 
     public static final String TABLE_NAME = "Question";
     public static final String ID = "m_id";

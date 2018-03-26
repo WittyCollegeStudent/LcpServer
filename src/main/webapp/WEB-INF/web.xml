@@ -8,9 +8,18 @@
     <servlet-name>QuestionServlet</servlet-name>
     <servlet-class>servlet.QuestionServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>AnswerServlet</servlet-name>
+    <servlet-class>servlet.AnswerServlet</servlet-class>
+  </servlet>
+  
   <servlet-mapping>
     <servlet-name>QuestionServlet</servlet-name>
     <url-pattern>/questionServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>AnswerServlet</servlet-name>
+    <url-pattern>/answerServlet</url-pattern>
   </servlet-mapping>
 </web-app>
 

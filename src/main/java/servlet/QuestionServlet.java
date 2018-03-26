@@ -1,18 +1,18 @@
 package servlet;
-import entity.Quesion;
+
 import entity.QuestionView;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import utils.DBHelper;
 
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 public class QuestionServlet extends HttpServlet {
     protected void doGet( HttpServletRequest request, HttpServletResponse response )
     throws ServletException, IOException
@@ -36,15 +36,6 @@ public class QuestionServlet extends HttpServlet {
                 jsonobj.put("isvisible",resultSet.getString(QuestionView.ISVISIBLE));
                 jsonobj.put("pubdate",resultSet.getString(QuestionView.PUBDATE));
                 jsonobj.put("count",resultSet.getString(QuestionView.COUNT));
-//                QuestionView questionView = new QuestionView();
-//                questionView.setId(Integer.parseInt(resultSet.getString(QuestionView.ID)));
-//                questionView.setName(resultSet.getString(QuestionView.QNAME));
-//                questionView.setQcontent(resultSet.getString(QuestionView.QCONTENT));
-//                questionView.setPublisher(resultSet.getString(QuestionView.PUBLISHER));
-//                questionView.setMajor(resultSet.getString(QuestionView.MAJOR));
-//                questionView.setIsvisible(resultSet.getString(QuestionView.ISVISIBLE));
-//                questionView.setPubdate(resultSet.getString(QuestionView.PUBDATE));
-//                questionView.setCount(Integer.parseInt(resultSet.getString(QuestionView.COUNT)));
                 jsonarray.put(jsonobj);
             }
             out.println(jsonarray);

@@ -14,14 +14,14 @@ public class QuestionView implements Serializable{
     public static final String PUBDATE = "v_pubdate";
     public static final String COUNT = "count";
 
-    public int id;
-    public String name;
-    public String qcontent;
-    public String publisher;
-    public String major;
-    public String isvisible;
-    public String pubdate;
-    public int count;
+    private int id;
+    private String name;
+    private String qcontent;
+    private String publisher;
+    private String major;
+    private String isvisible;
+    private String pubdate;
+    private int count;
 
     public QuestionView() {
     }

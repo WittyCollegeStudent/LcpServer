@@ -68,10 +68,11 @@ public class AddQuestionServlet extends HttpServlet {
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            out.println(jsonObject);
-            out.flush();
+            if(out != null){
+                out.println(jsonObject);
+                out.close();
+            }
             dbHelper.close();
-            out.close();
         }
     }
 }

@@ -55,7 +55,7 @@ public class QuestionService {
                     .append(major).append(",")
                     .append(isvisible).append(",")
                     .append("\"").append(date).append("\"").append(");");
-            dbHelper.DoInsert(sqlInsert.toString());
+            dbHelper.doInsert(sqlInsert.toString());
             flag = true;
         }catch (Exception e){
             e.printStackTrace();

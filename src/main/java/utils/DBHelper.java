@@ -1,15 +1,39 @@
 package utils;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.*;
+import java.util.Properties;
 
 public class DBHelper {
     Connection con = null;
     public void conn() {
+        Properties properties = new Properties();
+        InputStream in = null;
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            String uri = "jdbc:mysql://193.112.70.161";
-            String user = "userlcp";
-            String password = "userlcp";
+            in = this.getClass().getClassLoader()
+                    .getResourceAsStream("jdbc.properties");
+            properties.load(in);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e){
+            e.printStackTrace();
+        } finally {
+            try {
+                if(in != null){
+                    in.close();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        try {
+            String driver = properties.getProperty("datasource.driver");
+            String uri = properties.getProperty("datasource.url");
+            String user = properties.getProperty("datasource.username");
+            String password = properties.getProperty("datasource.password");
+            Class.forName(driver);
             con = DriverManager.getConnection(uri, user, password);
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
@@ -24,7 +48,7 @@ public class DBHelper {
         return s.executeQuery(sql);
     }
 
-    public void DoInsert(String sql) {
+    public void doInsert(String sql) {
         Statement s;
         try {
             s = con.createStatement();

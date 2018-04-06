@@ -8,6 +8,13 @@
   <name>LcpServer Maven Webapp</name>
   <url>http://maven.apache.org</url>
   <dependencies>
+    <!--导入StringUtils包-->
+    <dependency>
+      <groupId>commons-lang</groupId>
+      <artifactId>commons-lang</artifactId>
+      <version>2.6</version>
+    </dependency>
+
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
@@ -51,6 +58,7 @@
         <version>2.2</version>
         <configuration>
           <path>/</path>
+          <uriEncoding>UTF-8</uriEncoding>
         </configuration>
       </plugin>
     </plugins>

@@ -5,21 +5,29 @@
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
   <servlet>
-    <servlet-name>QuestionServlet</servlet-name>
-    <servlet-class>servlet.QuestionServlet</servlet-class>
+    <servlet-name>GetQuestionViewServlet</servlet-name>
+    <servlet-class>servlet.GetQuestionViewServlet</servlet-class>
   </servlet>
   <servlet>
-    <servlet-name>AnswerServlet</servlet-name>
-    <servlet-class>servlet.AnswerServlet</servlet-class>
+    <servlet-name>GetAnswerViewServlet</servlet-name>
+    <servlet-class>servlet.GetAnswerViewServlet</servlet-class>
   </servlet>
-  
+  <servlet>
+    <servlet-name>AddQuestionServlet</servlet-name>
+    <servlet-class>servlet.AddQuestionServlet</servlet-class>
+  </servlet>
+
   <servlet-mapping>
-    <servlet-name>QuestionServlet</servlet-name>
-    <url-pattern>/questionServlet</url-pattern>
+    <servlet-name>GetQuestionViewServlet</servlet-name>
+    <url-pattern>/getQuestionViewServlet</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
-    <servlet-name>AnswerServlet</servlet-name>
-    <url-pattern>/answerServlet</url-pattern>
+    <servlet-name>GetAnswerViewServlet</servlet-name>
+    <url-pattern>/getAnswerViewServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>AddQuestionServlet</servlet-name>
+    <url-pattern>/addQuestionServlet</url-pattern>
   </servlet-mapping>
 </web-app>
 

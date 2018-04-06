@@ -15,7 +15,7 @@ public class QuestionView implements Serializable{
     public static final String COUNT = "count";
 
     private int id;
-    private String name;
+    private String qname;
     private String qcontent;
     private String publisher;
     private String major;
@@ -26,9 +26,9 @@ public class QuestionView implements Serializable{
     public QuestionView() {
     }
 
-    public QuestionView(int id, String name, String qcontent, String publisher, String major, String isvisible, String pubdate, int count) {
+    public QuestionView(int id, String qname, String qcontent, String publisher, String major, String isvisible, String pubdate, int count) {
         this.id = id;
-        this.name = name;
+        this.qname = qname;
         this.qcontent = qcontent;
         this.publisher = publisher;
         this.major = major;
@@ -45,12 +45,12 @@ public class QuestionView implements Serializable{
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getQname() {
+        return qname;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setQname(String qname) {
+        this.qname = qname;
     }
 
     public String getQcontent() {
@@ -100,4 +100,18 @@ public class QuestionView implements Serializable{
     public void setCount(int count) {
         this.count = count;
     }
+
+    //输出格式为json
+//    public String toString(){
+//        return "{"
+//                +"\"id\":" + id + ","
+//                +"\"qname\":" + "\"" + qname +  "\"" + ","
+//                +"\"qcontent\":" + "\"" + qcontent +  "\"" + ","
+//                +"\"publisher\":" + "\"" + publisher +  "\"" + ","
+//                +"\"major\":" + "\"" + major +  "\"" + ","
+//                +"\"isvisible\":" + "\"" + isvisible +  "\"" + ","
+//                +"\"pubdate\":" + "\"" + pubdate +  "\"" + ","
+//                +"\"count\":" + count
+//                +"}";
+//    }
 }

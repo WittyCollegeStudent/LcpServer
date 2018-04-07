@@ -4,10 +4,11 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.*;
+import java.util.List;
 import java.util.Properties;
 
 public class DBHelper {
-    Connection con = null;
+    private Connection con = null;
     public void conn() {
         Properties properties = new Properties();
         InputStream in = null;
@@ -42,17 +43,45 @@ public class DBHelper {
         }
     }
 
-    public ResultSet getRS(String sql) throws SQLException {
-        Statement s;
-        s = con.createStatement();
-        return s.executeQuery(sql);
+    public ResultSet getRS(String sql, List<Object> params) {
+        PreparedStatement preState = null;//预编译块
+        ResultSet resultSet = null;
+        try {
+            preState = con.prepareStatement(sql);
+            if(params != null){
+                int size = params.size();
+                for(int i = 0 ; i < size; i ++){
+                    Object item = params.get(i);
+                    //判断item类型，对相应的类型选择不同的方法
+                    if(item instanceof String){
+                        preState.setString(i + 1, item.toString());
+                    }else{
+                        preState.setInt(i + 1, Integer.parseInt(item.toString()));
+                    }
+                }
+            }
+            resultSet = preState.executeQuery();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return resultSet;
     }
 
-    public void doInsert(String sql) {
-        Statement s;
+    public void doInsert(String sql, List<Object> params) {
+        PreparedStatement preState = null;//预编译块
         try {
-            s = con.createStatement();
-            s.executeUpdate(sql);
+            preState = con.prepareStatement(sql);
+            int size = params.size();//参数数量
+            for(int i  = 0 ; i < size ; i ++){
+                Object item = params.get(i);
+                //判断item类型，对相应的类型选择不同的方法
+                if(item instanceof String){
+                    preState.setString(i + 1, item.toString());
+                }else{
+                    preState.setInt(i + 1, Integer.parseInt(item.toString()));
+                }
+            }
+            preState.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }

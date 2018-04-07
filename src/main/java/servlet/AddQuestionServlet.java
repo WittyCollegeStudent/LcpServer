@@ -1,5 +1,6 @@
 package servlet;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import entity.QuestionView;
 import org.json.JSONObject;
 import service.QuestionService;
@@ -26,11 +27,12 @@ public class AddQuestionServlet extends HttpServlet {
         PrintWriter out = null;
         DBHelper dbHelper = new DBHelper();
         JSONObject jsonObject = new JSONObject();
+        ResultSet resultSet = null;
         try {
             out = response.getWriter();
             dbHelper.conn();
             String qname = (URLDecoder.decode(request.getParameter("qname"), "utf-8"));
-            ResultSet resultSet = questionService.searchQuestionView(dbHelper, qname, null);
+            resultSet = questionService.searchQuestionView(dbHelper, qname, null);
             //1.如果结果不为空，说明存在重名
             if (resultSet != null && resultSet.next()) {
                 jsonObject.put("success", false);
@@ -56,8 +58,9 @@ public class AddQuestionServlet extends HttpServlet {
                     questionView.setIsvisible(reSet.getString(QuestionView.ISVISIBLE));
                     questionView.setPubdate(reSet.getString(QuestionView.PUBDATE));
                     questionView.setCount(Integer.parseInt(reSet.getString(QuestionView.COUNT)));
+                    String jsonQuestionView = (new ObjectMapper()).writeValueAsString(questionView);
                     //3.如果插入成功，则应该返回这条问题
-                    jsonObject.put(QuestionView.VIEW_NAME, JSONObject.valueToString(questionView));
+                    jsonObject.put(QuestionView.VIEW_NAME, jsonQuestionView);
                     jsonObject.put("message", "发布问题成功");
                 }
             }
@@ -71,6 +74,13 @@ public class AddQuestionServlet extends HttpServlet {
             if(out != null){
                 out.println(jsonObject);
                 out.close();
+            }
+            if(resultSet != null){
+                try {
+                    resultSet.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
             }
             dbHelper.close();
         }

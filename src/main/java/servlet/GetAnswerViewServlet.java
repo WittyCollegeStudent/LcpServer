@@ -18,7 +18,7 @@ public class GetAnswerViewServlet extends HttpServlet {
 
     private AnswerService answerService = new AnswerService();
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         // 设置响应内容类型
         // 设置响应内容类型
         response.setContentType("text/json; charset=utf-8");
@@ -27,7 +27,7 @@ public class GetAnswerViewServlet extends HttpServlet {
         DBHelper dbHelper = new DBHelper();
         dbHelper.conn();
         try {
-            ResultSet resultSet = answerService.getAnswerViewByQid(dbHelper, qid);
+            ResultSet resultSet = answerService.searchAnswerView(dbHelper, qid, null, null);
             JSONArray jsonarray = new JSONArray();
             if(resultSet != null){
                 while(resultSet.next()){

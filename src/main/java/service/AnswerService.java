@@ -50,6 +50,7 @@ public class AnswerService {
                 id = -1;
             }
         }
+        System.out.println("last_insert_id = " + id);
         return id;
     }
 

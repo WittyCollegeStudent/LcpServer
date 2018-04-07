@@ -42,7 +42,7 @@ public class AddAnswerServlet extends HttpServlet {
             if (success) {
                 //获取新建的回答id
                 int id = answerService.lastInsertID(dbHelper);
-                reSet = answerService.searchAnswerView(dbHelper, qid, null, null);
+                reSet = answerService.searchAnswerView(dbHelper, null, id, null);
                 reSet.next();
                 AnswerView answerView = new AnswerView();
                 answerView.setId(Integer.parseInt(reSet.getString(AnswerView.ID)));

@@ -31,6 +31,7 @@ public class AnswerService {
             sql.append(" and ").append(AnswerView.ANSCONTENT).append("=?");
             list.add(anscontent);
         }
+        sql.append(" order by " + AnswerView.ANS_DATE + " desc," + AnswerView.VOTE_P + " asc," + AnswerView.ANSCONTENT + " asc");
         return dbHelper.getRS(sql.toString(), list);
     }
 

@@ -20,6 +20,10 @@
     <servlet-name>AddAnswerServlet</servlet-name>
     <servlet-class>servlet.AddAnswerServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>LoginServlet</servlet-name>
+    <servlet-class>servlet.LoginServlet</servlet-class>
+  </servlet>
 
   <servlet-mapping>
     <servlet-name>GetQuestionViewServlet</servlet-name>
@@ -36,6 +40,10 @@
   <servlet-mapping>
     <servlet-name>AddAnswerServlet</servlet-name>
     <url-pattern>/addAnswerServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>LoginServlet</servlet-name>
+    <url-pattern>/loginServlet</url-pattern>
   </servlet-mapping>
 </web-app>
 

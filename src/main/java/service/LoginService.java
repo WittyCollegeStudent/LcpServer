@@ -18,11 +18,11 @@ public class LoginService {
                 .append(" where 1=1 ");
         List<Object> list = new ArrayList<Object>();
         if(tel != null){
-            sql.append(" and ").append(UserInfoView.TEL).append("=?");
+            sql.append(" and ").append(UserInfoView.COLUNM_NAME_TEL).append("=?");
             list.add(tel);
         }
         if(passwd != null){
-            sql.append(" and ").append(UserInfoView.PASSWD).append("=?");
+            sql.append(" and ").append(UserInfoView.COLUNM_NAME_PASSWD).append("=?");
             list.add(passwd);
         }
         return dbHelper.getRS(sql.toString(), list);

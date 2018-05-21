@@ -1,8 +1,8 @@
 package servlet;
 
-import entity.UserInfoView;
 import org.json.JSONObject;
 import service.LoginService;
+import service.QuestionService;
 import utils.DBHelper;
 
 import javax.servlet.http.HttpServlet;
@@ -11,39 +11,33 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 
-public class LoginServlet extends HttpServlet {
+public class DelQuestionServlet extends HttpServlet {
 
-    private LoginService loginService = new LoginService();
+    private QuestionService questionService = new QuestionService();
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         // 设置响应内容类型
         // 设置响应内容类型
         response.setContentType("text/json; charset=utf-8");
+        int question_id = Integer.parseInt(request.getParameter("question_id")); //回答编号
         String tel = request.getParameter("tel");//获取传入的电话号码
         String passwd = request.getParameter("passwd");//获取传入的密码
         PrintWriter out = response.getWriter();
         DBHelper dbHelper = new DBHelper();
         dbHelper.conn();
         try {
-            ResultSet resultSet = null;
-            //根据传入参数查询问题
-            resultSet = loginService.getUserInfo(dbHelper, tel, passwd);
+            ResultSet resultSet = new LoginService().getUserInfo(dbHelper, tel, passwd);
             JSONObject jsonobj = new JSONObject();
             if (resultSet.next()) {
-                jsonobj.put("id", resultSet.getString(UserInfoView.COLUNM_NAME_ID));
-                jsonobj.put("type", resultSet.getString(UserInfoView.COLUNM_NAME_TYPE));
-                jsonobj.put("major", resultSet.getString(UserInfoView.COLUNM_NAME_MAJOR));
-                jsonobj.put("name", resultSet.getString(UserInfoView.COLUNM_NAME_NAME));
-                jsonobj.put("sex", resultSet.getString(UserInfoView.COLUNM_NAME_SEX));
-                jsonobj.put("tel", resultSet.getString(UserInfoView.COLUNM_NAME_TEL));
+                questionService.delQuestionById(dbHelper, question_id);
                 jsonobj.put("success", true);
             } else {
                 jsonobj.put("success", false);
+                jsonobj.put("message", "删除问题失败");
             }
             out.println(jsonobj);
-        } catch (SQLException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         out.flush();

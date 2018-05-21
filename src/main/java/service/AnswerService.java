@@ -1,7 +1,7 @@
 package service;
 
+import entity.Answer;
 import entity.AnswerView;
-import entity.QuestionView;
 import utils.DBHelper;
 
 import java.sql.ResultSet;
@@ -20,19 +20,37 @@ public class AnswerService {
                 .append(" where 1=1 ");
         List<Object> list = new ArrayList<Object>();
         if(qid != null){
-            sql.append(" and ").append(AnswerView.QID).append("=?");
+            sql.append(" and ").append(AnswerView.COLUNM_NAME_QID).append("=?");
             list.add(qid);
         }
         if(id != null){
-            sql.append(" and ").append(AnswerView.ID).append("=?");
+            sql.append(" and ").append(AnswerView.COLUNM_NAME_ID).append("=?");
             list.add(id);
         }
         if(anscontent != null){
-            sql.append(" and ").append(AnswerView.ANSCONTENT).append("=?");
+            sql.append(" and ").append(AnswerView.COLUNM_NAME_ANSCONTENT).append("=?");
             list.add(anscontent);
         }
-        sql.append(" order by " + AnswerView.ANS_DATE + " desc," + AnswerView.VOTE_P + " asc," + AnswerView.ANSCONTENT + " asc");
+//        sql.append(" order by " + AnswerView.COLUNM_NAME_ANS_DATE + " desc," + AnswerView.COLUNM_NAME_VOTE_P + " asc," + AnswerView.COLUNM_NAME_ANSCONTENT + " asc");
+        sql.append(" order by " + AnswerView.COLUNM_NAME_ANS_DATE + " desc," + AnswerView.COLUNM_NAME_ID + " asc");
         return dbHelper.getRS(sql.toString(), list);
+    }
+
+    /**
+     * 删除回答
+     * */
+    public void delAnswerById(DBHelper dbHelper, Integer aid) {
+        StringBuilder sql = new StringBuilder("delete from lcp.")
+                .append(Answer.TABLE_NAME)
+                .append(" where 1=1 ");
+        List<Object> list = new ArrayList<Object>();
+        if(aid != null){
+            sql.append(" and ").append(AnswerView.COLUNM_NAME_ID).append("=?");
+            list.add(aid);
+        }
+//        sql.append(" order by " + AnswerView.COLUNM_NAME_ANS_DATE + " desc," + AnswerView.COLUNM_NAME_VOTE_P + " asc," + AnswerView.COLUNM_NAME_ANSCONTENT + " asc");
+        sql.append(" order by " + AnswerView.COLUNM_NAME_ANS_DATE + " desc," + AnswerView.COLUNM_NAME_ID + " asc");
+        dbHelper.doDelete(sql.toString(), list);
     }
 
     /**

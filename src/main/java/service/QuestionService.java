@@ -1,5 +1,8 @@
 package service;
 
+import entity.Answer;
+import entity.AnswerView;
+import entity.Quesion;
 import entity.QuestionView;
 import utils.DBHelper;
 import java.sql.ResultSet;
@@ -12,7 +15,7 @@ public class QuestionService {
      * 获得所有的问题，并按照评论数量降序排序
      */
     public ResultSet getAllQuestionView(DBHelper dbHelper) {
-        return dbHelper.getRS("select * from lcp." + QuestionView.VIEW_NAME + " order by count desc,v_qname asc", null);
+        return dbHelper.getRS("select * from lcp." + QuestionView.VIEW_NAME + " order by count desc,m_id asc", null);
     }
 
     /**
@@ -31,8 +34,25 @@ public class QuestionService {
             sql.append(" and v_major = ?");
             params.add(major);
         }
-        sql.append(" order by count desc,v_qname asc");
+        sql.append(" order by count desc,m_id asc");
         return dbHelper.getRS(sql.toString(), params);
+    }
+
+    /**
+     * 查询回答
+     * */
+    public void delQuestionById(DBHelper dbHelper, Integer qid) {
+        StringBuilder sql = new StringBuilder("delete from lcp.")
+                .append(Quesion.TABLE_NAME)
+                .append(" where 1=1 ");
+        List<Object> list = new ArrayList<Object>();
+        if(qid != null){
+            sql.append(" and ").append(Quesion.ID).append("=?");
+            list.add(qid);
+        }
+//        sql.append(" order by " + AnswerView.COLUNM_NAME_ANS_DATE + " desc," + AnswerView.COLUNM_NAME_VOTE_P + " asc," + AnswerView.COLUNM_NAME_ANSCONTENT + " asc");
+        sql.append(" order by " + Quesion.PUBDATE + " desc," + Quesion.ID + " asc");
+        dbHelper.doDelete(sql.toString(), list);
     }
 
     /**

@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 public class Answer implements Serializable{
 
+    public static final String TABLE_NAME = "Answer";
+
     private int id;                 //回答id
     private int qid;                //问题id
     private String answerContent;   //回答内容

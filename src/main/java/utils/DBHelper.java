@@ -68,6 +68,10 @@ public class DBHelper {
     }
 
     public void doInsert(String sql, List<Object> params) {
+        update(sql, params);
+    }
+
+    private void update(String sql, List<Object> params){
         PreparedStatement preState = null;//预编译块
         try {
             preState = con.prepareStatement(sql);
@@ -85,6 +89,10 @@ public class DBHelper {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    public void doDelete(String sql, List<Object> params){
+        update(sql, params);
     }
 
     public void close() {

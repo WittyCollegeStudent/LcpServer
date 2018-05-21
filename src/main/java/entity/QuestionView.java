@@ -5,14 +5,15 @@ import java.io.Serializable;
 public class QuestionView implements Serializable{
 
     public static final String VIEW_NAME = "QuestionView";
-    public static final String ID = "m_id";
-    public static final String QNAME = "v_qname";
-    public static final String QCONTENT = "v_qcontent";
-    public static final String PUBLISHER = "v_publisher";
-    public static final String MAJOR = "v_major";
-    public static final String ISVISIBLE = "v_isvisible";
-    public static final String PUBDATE = "v_pubdate";
-    public static final String COUNT = "count";
+    public static final String COLUNM_NAME_ID = "m_id";
+    public static final String COLUNM_NAME_QNAME = "v_qname";
+    public static final String COLUNM_NAME_QCONTENT = "v_qcontent";
+    public static final String COLUNM_NAME_PUBLISHER = "v_publisher";
+    public static final String COLUNM_NAME_MAJOR = "v_major";
+    public static final String COLUNM_NAME_ISVISIBLE = "v_isvisible";
+    public static final String COLUNM_NAME_PUBDATE = "v_pubdate";
+    public static final String COLUNM_NAME_COUNT = "count";
+    public static final String COLUNM_NAME_PUBLISHER_ID = "publisher_id";
 
     private int id;
     private String qname;
@@ -22,11 +23,12 @@ public class QuestionView implements Serializable{
     private String isvisible;
     private String pubdate;
     private int count;
+    private int publisher_id;
 
     public QuestionView() {
     }
 
-    public QuestionView(int id, String qname, String qcontent, String publisher, String major, String isvisible, String pubdate, int count) {
+    public QuestionView(int id, String qname, String qcontent, String publisher, String major, String isvisible, String pubdate, int count, int publisher_id) {
         this.id = id;
         this.qname = qname;
         this.qcontent = qcontent;
@@ -35,6 +37,15 @@ public class QuestionView implements Serializable{
         this.isvisible = isvisible;
         this.pubdate = pubdate;
         this.count = count;
+        this.publisher_id = publisher_id;
+    }
+
+    public int getPublisher_id() {
+        return publisher_id;
+    }
+
+    public void setPublisher_id(int publisher_id) {
+        this.publisher_id = publisher_id;
     }
 
     public int getId() {

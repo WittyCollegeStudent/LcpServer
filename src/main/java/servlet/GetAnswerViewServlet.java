@@ -32,13 +32,14 @@ public class GetAnswerViewServlet extends HttpServlet {
             if(resultSet != null){
                 while(resultSet.next()){
                     JSONObject jsonobj = new JSONObject();
-                    jsonobj.put("id",resultSet.getString(AnswerView.ID));
-                    jsonobj.put("qid",resultSet.getString(AnswerView.QID));
-                    jsonobj.put("anscontent",resultSet.getString(AnswerView.ANSCONTENT));
-                    jsonobj.put("respondant",resultSet.getString(AnswerView.RESPONDANT));
-                    jsonobj.put("ans_date",resultSet.getString(AnswerView.ANS_DATE));
-                    jsonobj.put("vote_p",resultSet.getString(AnswerView.VOTE_P));
-                    jsonobj.put("vote_n",resultSet.getString(AnswerView.VOTE_N));
+                    jsonobj.put("id",resultSet.getString(AnswerView.COLUNM_NAME_ID));
+                    jsonobj.put("qid",resultSet.getString(AnswerView.COLUNM_NAME_QID));
+                    jsonobj.put("anscontent",resultSet.getString(AnswerView.COLUNM_NAME_ANSCONTENT));
+                    jsonobj.put("respondant",resultSet.getString(AnswerView.COLUNM_NAME_RESPONDANT));
+                    jsonobj.put("ans_date",resultSet.getString(AnswerView.COLUNM_NAME_ANS_DATE));
+                    jsonobj.put("vote_p",resultSet.getString(AnswerView.COLUNM_NAME_VOTE_P));
+                    jsonobj.put("vote_n",resultSet.getString(AnswerView.COLUNM_NAME_VOTE_N));
+                    jsonobj.put("respondant_id",resultSet.getString(AnswerView.COLUNM_NAME_RESPONDANT_ID));
                     jsonarray.put(jsonobj);
                 }
             }

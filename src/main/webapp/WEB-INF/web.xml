@@ -24,6 +24,14 @@
     <servlet-name>LoginServlet</servlet-name>
     <servlet-class>servlet.LoginServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>DelAnswerServlet</servlet-name>
+    <servlet-class>servlet.DelAnswerServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>DelQuestionServlet</servlet-name>
+    <servlet-class>servlet.DelQuestionServlet</servlet-class>
+  </servlet>
 
   <servlet-mapping>
     <servlet-name>GetQuestionViewServlet</servlet-name>
@@ -44,6 +52,14 @@
   <servlet-mapping>
     <servlet-name>LoginServlet</servlet-name>
     <url-pattern>/loginServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>DelAnswerServlet</servlet-name>
+    <url-pattern>/delAnswerServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>DelQuestionServlet</servlet-name>
+    <url-pattern>/delQuestionServlet</url-pattern>
   </servlet-mapping>
 </web-app>
 

@@ -11,13 +11,13 @@ public class UserInfoView implements Serializable {
     public static String FLAG_USERINFO = "USERINFO_VIEW";
 
     public static final String VIEW_NAME = "UserInfoView";
-    public static final String ID = "m_id";
-    public static final String TYPE = "v_type";
-    public static final String NAME = "v_name";
-    public static final String SEX = "v_sex";
-    public static final String TEL = "v_tel";
-    public static final String MAJOR = "v_major";
-    public static final String PASSWD = "v_passwd";
+    public static final String COLUNM_NAME_ID = "m_id";
+    public static final String COLUNM_NAME_TYPE = "v_type";
+    public static final String COLUNM_NAME_NAME = "v_name";
+    public static final String COLUNM_NAME_SEX = "v_sex";
+    public static final String COLUNM_NAME_TEL = "v_tel";
+    public static final String COLUNM_NAME_MAJOR = "v_major";
+    public static final String COLUNM_NAME_PASSWD = "v_passwd";
 
     private int id;                 //回答id
     private String type;           //用户类别

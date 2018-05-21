@@ -45,13 +45,14 @@ public class AddAnswerServlet extends HttpServlet {
                 reSet = answerService.searchAnswerView(dbHelper, null, id, null);
                 reSet.next();
                 AnswerView answerView = new AnswerView();
-                answerView.setId(Integer.parseInt(reSet.getString(AnswerView.ID)));
-                answerView.setQid(Integer.parseInt(reSet.getString(AnswerView.QID)));
-                answerView.setAns_date(reSet.getString(AnswerView.ANS_DATE));
-                answerView.setRespondant(reSet.getString(AnswerView.RESPONDANT));
-                answerView.setAnscontent(reSet.getString(AnswerView.ANSCONTENT));
-                answerView.setVote_p(Integer.parseInt(reSet.getString(AnswerView.VOTE_P)));
-                answerView.setVote_n(Integer.parseInt(reSet.getString(AnswerView.VOTE_N)));
+                answerView.setId(Integer.parseInt(reSet.getString(AnswerView.COLUNM_NAME_ID)));
+                answerView.setQid(Integer.parseInt(reSet.getString(AnswerView.COLUNM_NAME_QID)));
+                answerView.setAns_date(reSet.getString(AnswerView.COLUNM_NAME_ANS_DATE));
+                answerView.setRespondant(reSet.getString(AnswerView.COLUNM_NAME_RESPONDANT));
+                answerView.setAnscontent(reSet.getString(AnswerView.COLUNM_NAME_ANSCONTENT));
+                answerView.setRespondant_id(Integer.parseInt(reSet.getString(AnswerView.COLUNM_NAME_RESPONDANT_ID)));
+                answerView.setVote_p(Integer.parseInt(reSet.getString(AnswerView.COLUNM_NAME_VOTE_P)));
+                answerView.setVote_n(Integer.parseInt(reSet.getString(AnswerView.COLUNM_NAME_VOTE_N)));
                 String jsonanswerView = (new ObjectMapper()).writeValueAsString(answerView);
                 //3.如果插入成功，则应该返回这条问题
                 jsonObject.put(AnswerView.VIEW_NAME, jsonanswerView);

@@ -50,14 +50,15 @@ public class AddQuestionServlet extends HttpServlet {
                     ResultSet reSet = questionService.searchQuestionView(dbHelper, qname, null);
                     reSet.next();
                     QuestionView questionView = new QuestionView();
-                    questionView.setId(Integer.parseInt(reSet.getString(QuestionView.ID)));
-                    questionView.setQname(reSet.getString(QuestionView.QNAME));
-                    questionView.setQcontent(reSet.getString(QuestionView.QCONTENT));
-                    questionView.setPublisher(reSet.getString(QuestionView.PUBLISHER));
-                    questionView.setMajor(reSet.getString(QuestionView.MAJOR));
-                    questionView.setIsvisible(reSet.getString(QuestionView.ISVISIBLE));
-                    questionView.setPubdate(reSet.getString(QuestionView.PUBDATE));
-                    questionView.setCount(Integer.parseInt(reSet.getString(QuestionView.COUNT)));
+                    questionView.setId(Integer.parseInt(reSet.getString(QuestionView.COLUNM_NAME_ID)));
+                    questionView.setQname(reSet.getString(QuestionView.COLUNM_NAME_QNAME));
+                    questionView.setQcontent(reSet.getString(QuestionView.COLUNM_NAME_QCONTENT));
+                    questionView.setPublisher(reSet.getString(QuestionView.COLUNM_NAME_PUBLISHER));
+                    questionView.setMajor(reSet.getString(QuestionView.COLUNM_NAME_MAJOR));
+                    questionView.setIsvisible(reSet.getString(QuestionView.COLUNM_NAME_ISVISIBLE));
+                    questionView.setPubdate(reSet.getString(QuestionView.COLUNM_NAME_PUBDATE));
+                    questionView.setCount(Integer.parseInt(reSet.getString(QuestionView.COLUNM_NAME_COUNT)));
+                    questionView.setPublisher_id(Integer.parseInt(reSet.getString(QuestionView.COLUNM_NAME_PUBLISHER_ID)));
                     String jsonQuestionView = (new ObjectMapper()).writeValueAsString(questionView);
                     //3.如果插入成功，则应该返回这条问题
                     jsonObject.put(QuestionView.VIEW_NAME, jsonQuestionView);

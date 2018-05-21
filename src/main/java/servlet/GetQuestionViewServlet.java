@@ -41,14 +41,15 @@ public class GetQuestionViewServlet extends HttpServlet {
             if(resultSet != null){
                 while(resultSet.next()){
                     JSONObject jsonobj = new JSONObject();
-                    jsonobj.put("id",resultSet.getString(QuestionView.ID));
-                    jsonobj.put("qname",resultSet.getString(QuestionView.QNAME));
-                    jsonobj.put("qcontent",resultSet.getString(QuestionView.QCONTENT));
-                    jsonobj.put("publisher",resultSet.getString(QuestionView.PUBLISHER));
-                    jsonobj.put("major",resultSet.getString(QuestionView.MAJOR));
-                    jsonobj.put("isvisible",resultSet.getString(QuestionView.ISVISIBLE));
-                    jsonobj.put("pubdate",resultSet.getString(QuestionView.PUBDATE));
-                    jsonobj.put("count",resultSet.getString(QuestionView.COUNT));
+                    jsonobj.put("id",resultSet.getString(QuestionView.COLUNM_NAME_ID));
+                    jsonobj.put("qname",resultSet.getString(QuestionView.COLUNM_NAME_QNAME));
+                    jsonobj.put("qcontent",resultSet.getString(QuestionView.COLUNM_NAME_QCONTENT));
+                    jsonobj.put("publisher",resultSet.getString(QuestionView.COLUNM_NAME_PUBLISHER));
+                    jsonobj.put("major",resultSet.getString(QuestionView.COLUNM_NAME_MAJOR));
+                    jsonobj.put("isvisible",resultSet.getString(QuestionView.COLUNM_NAME_ISVISIBLE));
+                    jsonobj.put("pubdate",resultSet.getString(QuestionView.COLUNM_NAME_PUBDATE));
+                    jsonobj.put("count",resultSet.getString(QuestionView.COLUNM_NAME_COUNT));
+                    jsonobj.put("publisher_id",resultSet.getString(QuestionView.COLUNM_NAME_PUBLISHER_ID));
                     jsonarray.put(jsonobj);
                 }
             }
